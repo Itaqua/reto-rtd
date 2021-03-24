@@ -22,7 +22,7 @@ class PayrollService {
 
         teamGroups.collect {team, teamPlayers ->
 
-            def expandedTeamPlayers = expandTeamPlayersList( team, teamPlayers, categoryObjectives)
+            def expandedTeamPlayers = expandTeamPlayersList(team, teamPlayers, categoryObjectives)
 
             long teamGoals = expandedTeamPlayers.goles.sum()
             long teamGoalsObjective = expandedTeamPlayers.goles_minimos.sum()
