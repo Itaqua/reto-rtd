@@ -5,3 +5,7 @@ div.txtBoard > textarea {
     width: inherit;
     height: 15em;
 }
+
+div#preResult {
+    overflow-wrap: break-word;
+}
