@@ -11,9 +11,21 @@
 </head>
 <body class="container">
     <h1 class="display-5 fw-bold lh-1 mb-3">Bienvenido a Resuelve FC API</h1>
-
+    Esta forma llama al servicio <b>/fc/salaries</b> usando un <b>POST</b> y pasando los datos dados en los Campos de la forma:
+    <pre>
+    {
+        jugadores: [
+            ... lista de jugadores ...
+        ],
+        metas: {
+            ... mapa de metas ...
+        }
+    }
+    </pre>
     <form id="formSueldo">
-        <button class="btn btn-primary">Sueldo</button>
+        <div>
+        <button class="btn btn-primary">Calcular Sueldo</button>
+        </div>
         jugadores:
         <div class="txtBoard">
         <textarea id="txtPlayers">
@@ -55,9 +67,15 @@
 }
         </textarea>
         </div>
-        Metas:
+        Metas: 
         <div class="txtBoard">
             <textarea id="txtMetas">
+"azul": {
+    "A" : 3,
+    "B" : 5,
+    "C" : 10,
+    "Cuauh" : 35
+},
 "default": {
     "A" : 5,
     "B" : 10,
@@ -75,8 +93,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div id="preResult">
-                    </div>
+                    <pre id="preResult"></pre>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -87,6 +104,25 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script>
+        function syntaxHighlight(json) {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+
         document.getElementById("formSueldo").onsubmit = function(e) {
             e.preventDefault();
             let txtPlayers = document.getElementById("txtPlayers");
@@ -98,7 +134,8 @@
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.send(json);
             let preResult = document.getElementById("preResult"); 
-            preResult.innerHTML = xhr.responseText; 
+            let jsonRes = JSON.stringify(JSON.parse(xhr.response), null, 4);
+            preResult.innerHTML = syntaxHighlight(jsonRes);
             let myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
             myModal.show();
         }

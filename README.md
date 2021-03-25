@@ -27,7 +27,10 @@ Obtener el codigo desde el repositorio de Github:
 ```
 git clone git@github.com:Itaqua/reto-rtd.git
 ``` 
+### Correr la aplicación
 
+## Opcional: correr usando Docker
 
+## Descripción del metodo de trabajo
 
 // ## Docker
