@@ -1,0 +1,7 @@
+div.txtBoard {
+    width: 100%;
+}
+div.txtBoard > textarea {
+    width: inherit;
+    height: 15em;
+}
