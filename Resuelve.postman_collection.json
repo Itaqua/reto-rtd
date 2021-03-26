@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "f698a31f-5227-47d6-ad7b-6635cceb5154",
+		"name": "Resuelve",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost: sueldo con objetivos predefinidos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"jugadores\" : [  \r\n      {  \r\n         \"nombre\":\"Juan Perez\",\r\n         \"nivel\":\"C\",\r\n         \"goles\":10,\r\n         \"sueldo\":50000,\r\n         \"bono\":25000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"rojo\"\r\n      },\r\n      {  \r\n         \"nombre\":\"EL Cuauh\",\r\n         \"nivel\":\"Cuauh\",\r\n         \"goles\":30,\r\n         \"sueldo\":100000,\r\n         \"bono\":30000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"azul\"\r\n      },\r\n      {  \r\n         \"nombre\":\"Cosme Fulanito\",\r\n         \"nivel\":\"A\",\r\n         \"goles\":7,\r\n         \"sueldo\":20000,\r\n         \"bono\":10000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"azul\"\r\n\r\n      },\r\n      {  \r\n         \"nombre\":\"El Rulo\",\r\n         \"nivel\":\"B\",\r\n         \"goles\":9,\r\n         \"sueldo\":30000,\r\n         \"bono\":15000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"rojo\"\r\n\r\n      }\r\n   ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/fc/salaries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fc",
+						"salaries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost: sueldo con objetivos proporcionados",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"metas\": {\r\n       \"rojo\": {\r\n            \"A\" : 2,\r\n            \"B\" : 5,\r\n            \"C\" : 10,\r\n            \"Cuauh\" : 15\r\n       },\r\n       \"default\": {\r\n            \"A\" : 5,\r\n            \"B\" : 10,\r\n            \"C\" : 15,\r\n            \"Cuauh\" : 20\r\n       } \r\n   },\r\n   \"jugadores\" : [  \r\n      {  \r\n         \"nombre\":\"Juan Perez\",\r\n         \"nivel\":\"C\",\r\n         \"goles\":10,\r\n         \"sueldo\":50000,\r\n         \"bono\":25000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"rojo\"\r\n      },\r\n      {  \r\n         \"nombre\":\"EL Cuauh\",\r\n         \"nivel\":\"Cuauh\",\r\n         \"goles\":30,\r\n         \"sueldo\":100000,\r\n         \"bono\":30000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"azul\"\r\n      },\r\n      {  \r\n         \"nombre\":\"Cosme Fulanito\",\r\n         \"nivel\":\"A\",\r\n         \"goles\":7,\r\n         \"sueldo\":20000,\r\n         \"bono\":10000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"azul\"\r\n\r\n      },\r\n      {  \r\n         \"nombre\":\"El Rulo\",\r\n         \"nivel\":\"B\",\r\n         \"goles\":9,\r\n         \"sueldo\":30000,\r\n         \"bono\":15000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"rojo\"\r\n\r\n      }\r\n   ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/fc/salaries",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fc",
+						"salaries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "heroku: sueldo con objetivos predefinidos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"jugadores\" : [  \r\n      {  \r\n         \"nombre\":\"Juan Perez\",\r\n         \"nivel\":\"C\",\r\n         \"goles\":10,\r\n         \"sueldo\":50000,\r\n         \"bono\":25000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"rojo\"\r\n      },\r\n      {  \r\n         \"nombre\":\"EL Cuauh\",\r\n         \"nivel\":\"Cuauh\",\r\n         \"goles\":30,\r\n         \"sueldo\":100000,\r\n         \"bono\":30000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"azul\"\r\n      },\r\n      {  \r\n         \"nombre\":\"Cosme Fulanito\",\r\n         \"nivel\":\"A\",\r\n         \"goles\":7,\r\n         \"sueldo\":20000,\r\n         \"bono\":10000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"azul\"\r\n\r\n      },\r\n      {  \r\n         \"nombre\":\"El Rulo\",\r\n         \"nivel\":\"B\",\r\n         \"goles\":9,\r\n         \"sueldo\":30000,\r\n         \"bono\":15000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"rojo\"\r\n\r\n      }\r\n   ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reto-rtd.herokuapp.com/fc/salaries",
+					"protocol": "https",
+					"host": [
+						"reto-rtd",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"fc",
+						"salaries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "heroku: sueldo con objetivos proporcionados",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"metas\": {\r\n       \"rojo\": {\r\n            \"A\" : 2,\r\n            \"B\" : 5,\r\n            \"C\" : 10,\r\n            \"Cuauh\" : 15\r\n       },\r\n       \"default\": {\r\n            \"A\" : 5,\r\n            \"B\" : 10,\r\n            \"C\" : 15,\r\n            \"Cuauh\" : 20\r\n       } \r\n   },\r\n   \"jugadores\" : [  \r\n      {  \r\n         \"nombre\":\"Juan Perez\",\r\n         \"nivel\":\"C\",\r\n         \"goles\":10,\r\n         \"sueldo\":50000,\r\n         \"bono\":25000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"rojo\"\r\n      },\r\n      {  \r\n         \"nombre\":\"EL Cuauh\",\r\n         \"nivel\":\"Cuauh\",\r\n         \"goles\":30,\r\n         \"sueldo\":100000,\r\n         \"bono\":30000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"azul\"\r\n      },\r\n      {  \r\n         \"nombre\":\"Cosme Fulanito\",\r\n         \"nivel\":\"A\",\r\n         \"goles\":7,\r\n         \"sueldo\":20000,\r\n         \"bono\":10000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"azul\"\r\n\r\n      },\r\n      {  \r\n         \"nombre\":\"El Rulo\",\r\n         \"nivel\":\"B\",\r\n         \"goles\":9,\r\n         \"sueldo\":30000,\r\n         \"bono\":15000,\r\n         \"sueldo_completo\":null,\r\n         \"equipo\":\"rojo\"\r\n\r\n      }\r\n   ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reto-rtd.herokuapp.com/fc/salaries",
+					"protocol": "https",
+					"host": [
+						"reto-rtd",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"fc",
+						"salaries"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
