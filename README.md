@@ -76,6 +76,22 @@ Para correr la aplicación, se realiza utilizando el sistema de empaquetado llam
 ```
 ./gradlew bootRun
 ```
+La aplicación se ejecuta por defecto en el puerto 8080, asi que para acceder a ella se puede ir a la dirección:
+
+http://localhost:8080
+
+ó en Heroku
+
+https://reto-rtd.herokuapp.com/
+
+Este desplegara una Forma que se puede usar para probar la aplicación.
+
+o también enviando los datos por medío del endpoint
+**/fc/salaries** (y el host objetivo), por ejemplo:
+http://localhost:8080fc/salaries
+
+Puede consultar la sección de Postman para más información.
+
 
 ### Empaquetar la aplicación (JAR)
 La aplicación se puede empaquetar en un fat jar (paquete con todas sus dependencias) usando el comando:
@@ -87,4 +103,85 @@ esto generará el archivo en **build/lib** por ejemplo *fc-0.0.1-SNAPSHOT.jar*
 este archivo puede posteriormente ejecutarse usando la JVM con el siguiente comando:
 ```
 java -jar fc-0.0.1-SNAPSHOT.jar
+```
+Para terminar la aplicación basta con pulsar [Ctrl]+C
+
+
+## Docker
+La aplicación puede correrse dentro de un contenedor, contiene un archivo **Dockerfile** para crear una imagen que contenga la aplicación, y también un **docker-compose.yml** para iniciar la aplicación.
+
+El proceso para ejecutarlo es de la siguiente forma:
+
+Primero se hace el build de la aplicación:
+```
+./gradlew build
+```
+
+y de ahi se arranca la aplicación utilizando Docker-compose:
+```
+docker-compose up
+```
+
+ewsto inicia la aplicación con un seguimiento al registro de eventos para salir de la aplicación basta teclear [Ctrl]+ C, tambien se puede arrancar utilizando la bandera -d que lo arranca como un Daemon
+```
+docker-compose up -d
+```
+
+### Terminando la aplicación
+Para terminar la aplicación basta que se de el comando **down** al docker compose:
+```
+docker-compose down
+```
+
+## Postman
+se incluye una colección de Postman para poder invocar la aplicación de forma local o llamando al servicio que está en Heroku: **Resuelve.postman_collection.json**
+
+solo se tiene que importar el archivo dentro de Postman.
+
+Otra forma es utilizando el comando **curl** como el siguiente ejemplo:
+```
+url --location --request POST 'http://localhost:8080/fc/salaries' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+   "jugadores" : [  
+      {  
+         "nombre":"Juan Perez",
+         "nivel":"C",
+         "goles":10,
+         "sueldo":50000,
+         "bono":25000,
+         "sueldo_completo":null,
+         "equipo":"rojo"
+      },
+      {  
+         "nombre":"EL Cuauh",
+         "nivel":"Cuauh",
+         "goles":30,
+         "sueldo":100000,
+         "bono":30000,
+         "sueldo_completo":null,
+         "equipo":"azul"
+      },
+      {  
+         "nombre":"Cosme Fulanito",
+         "nivel":"A",
+         "goles":7,
+         "sueldo":20000,
+         "bono":10000,
+         "sueldo_completo":null,
+         "equipo":"azul"
+
+      },
+      {  
+         "nombre":"El Rulo",
+         "nivel":"B",
+         "goles":9,
+         "sueldo":30000,
+         "bono":15000,
+         "sueldo_completo":null,
+         "equipo":"rojo"
+
+      }
+   ]
+}'
 ```
